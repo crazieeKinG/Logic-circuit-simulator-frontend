@@ -1,0 +1,26 @@
+canvas {
+    border: 1px solid black;
+    /* margin: 5px; */
+    background-color: salmon;
+}
+
+.row {
+    display: flex;
+}
+
+.justify-between{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toolbar {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+    background-color: white;
+    padding: 1rem;
+
+}

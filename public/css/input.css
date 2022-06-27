@@ -1,0 +1,16 @@
+.inputs {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid grey;
+	padding: 1rem;
+	border-radius: 4px;
+}
+
+.switch{
+    background: url('../svg/switch.svg') no-repeat 0 -14px;
+	background-size: 40px 48px;
+	width: 40px;
+	height: 20px;
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/gates.css">
+    <link rel="stylesheet" href="./css/input.css">
+    <link rel="stylesheet" href="./css/output.css">
+    <link rel="stylesheet" href="./css/node_selection.css">
+</head>
+
+<body>
+    <div class="row">
+        <canvas id="workspace"></canvas>
+
+        <div class="toolbar">
+            <a href="./index.html">Home</a>
+            <input type="text" name="title" id="title" placeholder="Enter project title">
+            <button id="save">Save project</button>
+            <span id="save_status"></span>
+            <label for="gates">Gates</label>
+            <div class="gates" id="gates">
+                <div class=" gate and_gate" inputs="2">2 AND</div>
+                <div class=" gate and_gate" inputs="3">3 AND</div>
+                <div class=" gate or_gate" inputs="2">2 OR</div>
+                <div class=" gate or_gate" inputs="3">3 OR</div>
+                <div class=" gate " id="not_gate">NOT</div>
+                <div class=" gate nand_gate" inputs="2">2 NAND</div>
+                <div class=" gate nand_gate" inputs="3">3 NAND</div>
+                <div class=" gate nor_gate" inputs="2">2NOR</div>
+                <div class=" gate nor_gate" inputs="3">3 NOR</div>
+                <div class=" gate xor_gate" inputs="2">2 XOR</div>
+                <div class=" gate xor_gate" inputs="3">3 XOR</div>
+                <div class=" gate xnor_gate" inputs="2">2 XNOR</div>
+                <div class=" gate xnor_gate" inputs="3">3 XNOR</div>
+                <div class=" gate " id="jk_flipflop">JK flipflop</div>
+            </div>
+
+            <label for="inputs">Inputs</label>
+            <div class="inputs" id="inputs">
+                <div class="switch" id="switch_input"></div>
+                <div class="frequency_generator" custom_frequency="0.5">.5 Hz</div>
+                <div class="frequency_generator" custom_frequency="1">1 Hz</div>
+            </div>
+
+            <label for="outputs">Outputs</label>
+            <div class="outputs" id="outputs">
+                <div class="light" id="light_output"></div>
+
+            </div>
+            <button id="ref">Play</button>
+            <div class="node_selection">
+                <label for="node_selected">Selected node</label>
+                <span class="node_selected" id="node_selected"></span>
+            </div>
+            <button id="clear_node_selection">clear node selection</button>
+            <button id="delete_selected_node">Delete node</button>
+        </div>
+    </div>
+
+    <script src="./js/constants.js"></script>
+    <script src="./js/utils.js"></script>
+
+    <script src="./js/draw_canvas.js"></script>
+    <script src="./js/logical_units/input_join.js"></script>
+    <script src="./js/logical_units/output_join.js"></script>
+    <script src="./js/logical_units/light.js"></script>
+    <script src="./js/logical_units/input_switch.js"></script>
+    <script src="./js/logical_units/wire.js"></script>
+
+    <script src="./js/logical_units/and.js"></script>
+    <script src="./js/logical_units/or.js"></script>
+    <script src="./js/logical_units/not.js"></script>
+    <script src="./js/logical_units/nand.js"></script>
+    <script src="./js/logical_units/nor.js"></script>
+    <script src="./js/logical_units/xnor.js"></script>
+    <script src="./js/logical_units/xor.js"></script>
+    <script src="./js/logical_units/frequency_generator.js"></script>
+    <script src="./js/logical_units/jk_flipflop.js"></script>
+
+    <script src="./js/drag_and_drop.js"></script>
+    <script src="./js/wire_function.js"></script>
+    <script src="./js/api_calls.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>

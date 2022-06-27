@@ -1,0 +1,16 @@
+.outputs {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+	border: 1px solid grey;
+	padding: 1rem;
+	border-radius: 4px;
+}
+
+.light{
+    background: url('../svg/light-bulbsvg.svg') no-repeat -2.4px 0;
+	background-size: 20px 20px;
+	width: 17px;
+	height: 20px;
+}
