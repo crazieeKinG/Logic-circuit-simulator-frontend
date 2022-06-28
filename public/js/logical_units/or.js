@@ -20,7 +20,7 @@ class Or {
 
         this.node.push(new Output(this.x + this.width, this.y + this.output_offset()));
 
-        this.draw("white");
+        // this.draw("white");
         // this.run();
     }
 

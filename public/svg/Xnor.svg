@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" id="svg2" viewBox="0 0 221.41 67.617" version="1.0">
+  <g id="layer1" transform="translate(-84.928 -704.54)">
+    <g id="g9540" transform="translate(26.268 135.33)">
+      <path id="path7638" d="m129.22 585.79h-50.085" stroke="#000" stroke-width="2.5971px" fill="none"/>
+      <path id="path7640" d="m129.22 620.11h-50.085" stroke="#000" stroke-width="2.5971px" fill="none"/>
+      <path id="text7642" d="m65.599 580.23l-2.78 7.54h5.569l-2.789-7.54m-1.157-2.01h2.323l5.773 15.14h-2.131l-1.379-3.88h-6.828l-1.38 3.88h-2.161l5.783-15.14"/>
+      <path id="path7646" d="m260.39 603.52h-50.09" stroke="#000" stroke-width="2.5971px" fill="none"/>
+      <path id="text7648" d="m267.3 595.81h2.2l4.2 6.23 4.17-6.23h2.2l-5.35 7.93v7.22h-2.06v-7.22l-5.36-7.93"/>
+      <path id="path7652" d="m130.82 570.51c7.26 12.57 9.04 22.08 9.04 32.49 0 12.55-3.15 22.3-9.04 32.51 22.79 0 57.7-10.87 70.47-31.84-12.9-19.5-48.05-33.16-70.47-33.16z" stroke="#0000a9" stroke-width="2.6" fill="none"/>
+      <path id="text7654" d="m63.049 620.45v5.55h3.287c1.103 0 1.918-0.23 2.445-0.68 0.534-0.46 0.802-1.16 0.802-2.1 0-0.95-0.268-1.65-0.802-2.09-0.527-0.46-1.342-0.68-2.445-0.68h-3.287m0-6.23v4.56h3.034c1.001 0 1.745-0.18 2.232-0.55 0.493-0.38 0.74-0.96 0.74-1.73 0-0.76-0.247-1.33-0.74-1.71-0.487-0.38-1.231-0.57-2.232-0.57h-3.034m-2.049-1.69h5.235c1.562 0 2.766 0.33 3.611 0.98 0.846 0.65 1.269 1.57 1.269 2.77 0 0.92-0.217 1.66-0.65 2.21s-1.068 0.89-1.907 1.02c1.008 0.22 1.789 0.67 2.343 1.36 0.562 0.69 0.843 1.54 0.843 2.57 0 1.35-0.46 2.4-1.38 3.14-0.92 0.73-2.229 1.1-3.926 1.1h-5.438v-15.15"/>
+      <path id="path7658" stroke-linejoin="round" d="m122.3 570.53c7.26 12.57 9.04 22.08 9.04 32.48 0 12.56-3.15 22.31-9.04 32.52" stroke="#0000a9" stroke-linecap="round" stroke-width="2.6" fill="none"/>
+      <path id="path7660" stroke-linejoin="round" d="m262.64 439.45a1.7046 1.7678 0 1 1 -3.41 0 1.7046 1.7678 0 1 1 3.41 0z" transform="matrix(2.5971 0 0 2.5971 -471.4 -537.83)" stroke="#0000a9" fill="none"/>
+    </g>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>logic functions - digital electronics</dc:title>
+        <dc:date>2008-02-06T04:29:40</dc:date>
+        <dc:description>anyone who know these symbols better and can add each one as a separate file properly named - please do so.</dc:description>
+        <dc:source>http://openclipart.org/detail/13109/logic-functions---digital-electronics-by-anonymous-13109</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Anonymous</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>computer</rdf:li>
+            <rdf:li>digital</rdf:li>
+            <rdf:li>electronic</rdf:li>
+            <rdf:li>function</rdf:li>
+            <rdf:li>image</rdf:li>
+            <rdf:li>logic</rdf:li>
+            <rdf:li>logic gate</rdf:li>
+            <rdf:li>media</rdf:li>
+            <rdf:li>png</rdf:li>
+            <rdf:li>public domain</rdf:li>
+            <rdf:li>svg</rdf:li>
+            <rdf:li>symbol</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

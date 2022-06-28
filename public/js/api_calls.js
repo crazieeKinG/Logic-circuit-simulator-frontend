@@ -17,6 +17,13 @@ const get_project_data = async (project_id) => {
     return data;
 }
 
+const get_information_data = async () => {
+    const data = await fetch(FIREBASE_GET_INFORMATION_URL)
+        .then(response => response.json());
+        
+    return data;
+}
+
 const send_project_data = async (project_data) => {
     const response = fetch(FIREBASE_POST_URL, {
         method: 'POST',

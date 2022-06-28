@@ -8,7 +8,12 @@ canvas {
     display: flex;
 }
 
-.justify-between{
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.justify-between {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -16,11 +21,11 @@ canvas {
 
 .toolbar {
     width: auto;
+    max-height: 95vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     width: 100%;
     background-color: white;
     padding: 1rem;
-
+    overflow-y: scroll;
 }

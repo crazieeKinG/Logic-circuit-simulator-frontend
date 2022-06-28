@@ -13,6 +13,7 @@ let select_unit = (event) => {
 
         if (check_mouse_in_unit(mouse_X, mouse_Y, units[index].x, units[index].y, units[index].width, units[index].height)) {
             SELECTED_UNIT = index;
+            update_information_section();
             units[SELECTED_UNIT].stroke = true;
             DRAG_UNIT = true;
             DX = units[index].x - mouse_X;

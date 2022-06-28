@@ -9,12 +9,12 @@ if (PROJECT_ID != 'null') {
 }
 draw_canvas();
 
-const ref = document.querySelector("#ref");
-ref.onclick = () => {
-    context.clearRect(0, 0, canvas_width, canvas_height);
-    // console.log(units);
-    draw_canvas();
-}
+// const ref = document.querySelector("#ref");
+// ref.onclick = () => {
+//     context.clearRect(0, 0, canvas_width, canvas_height);
+//     // console.log(units);
+//     draw_canvas();
+// }
 
 const clear_node_selection = document.querySelector("#clear_node_selection");
 clear_node_selection.onclick = () => {

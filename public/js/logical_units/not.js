@@ -14,7 +14,7 @@ class Not {
 
         this.node.push(new Output(this.x + this.width, this.y + this.offset()));
 
-        this.draw("white");
+        // this.draw("white");
         // this.run();
     }
 

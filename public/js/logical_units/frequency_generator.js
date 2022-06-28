@@ -62,7 +62,6 @@ class Frequency_generator {
 }
 
 const frequency_generator_btn = [...document.getElementsByClassName("frequency_generator")];
-console.log(frequency_generator_btn);
 frequency_generator_btn.forEach(frequency_generator => {
 
     frequency_generator.addEventListener("click", () => {

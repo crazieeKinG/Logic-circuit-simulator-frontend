@@ -1,4 +1,4 @@
-class JK {
+class SR {
     constructor(position_x, position_y) {
         this.x = position_x;
         this.y = position_y;
@@ -6,20 +6,18 @@ class JK {
         this.width = 80;
         this.height = 100;
 
-        this.name = "JK";
+        this.name = "SR";
 
         this.gates = [];
 
-        this.gates.push(new Nand(100, 100, 3));
-        this.gates.push(new Nand(400, 100, 2));
-        this.gates.push(new Nand(400, 400, 2));
-        this.gates.push(new Nand(100, 400, 3));
-        this.gates.push(new Wire(this.gates[3].node[3], this.gates[2].node[1]));
-        this.gates.push(new Wire(this.gates[0].node[3], this.gates[1].node[0]));
+        this.gates.push(new And(100, 100, 2));
+        this.gates.push(new Nor(400, 100, 2));
+        this.gates.push(new Nor(400, 400, 2));
+        this.gates.push(new And(100, 400, 2));
+        this.gates.push(new Wire(this.gates[3].node[2], this.gates[2].node[1]));
+        this.gates.push(new Wire(this.gates[0].node[2], this.gates[1].node[0]));
         this.gates.push(new Wire(this.gates[2].node[2], this.gates[1].node[1]));
         this.gates.push(new Wire(this.gates[1].node[2], this.gates[2].node[0]));
-        this.gates.push(new Wire(this.gates[2].node[2], this.gates[0].node[2]));
-        this.gates.push(new Wire(this.gates[1].node[2], this.gates[3].node[0]));
 
 
         this.node = [];
@@ -49,7 +47,7 @@ class JK {
 
         context.font = "2rem Josefin Sans";
         context.fillStyle = "white";
-        context.fillText("JK", this.x + (this.width / 4), this.y + (this.height / 2));
+        context.fillText("SR", this.x + (this.width / 4), this.y + (this.height / 2));
 
         this.node[0].x = this.x - 15;
         this.node[0].y = this.y + this.first_offset();
@@ -80,32 +78,28 @@ class JK {
         this.gates[0].node[0].state = this.node[0].state;
         this.gates[0].node[1].state = this.node[1].state;
         this.gates[3].node[1].state = this.node[1].state;
-        this.gates[3].node[2].state = this.node[2].state;
+        this.gates[3].node[0].state = this.node[2].state;
 
         this.node[3].state = this.gates[1].node[2].state;
         this.node[4].state = this.gates[2].node[2].state;
     }
 
     run = () => {
-        if (!this.jk_id) {
-            // clearInterval(this.frequency_generator_id);
+        if (!this.t_id) {
 
-            this.jk_id = setInterval(() => {
+            this.t_id = setInterval(() => {
                 this.gates[4].run();
-                this.gates[5].run();
                 this.gates[6].run();
+                this.gates[5].run();
                 this.gates[1].run();
                 this.gates[7].run();
                 this.gates[2].run();
                 this.gates[0].run();
                 this.gates[3].run();
-                this.gates[8].run();
-                this.gates[9].run();
-                console.log(this.gates.length);
 
                 this.operate();
                 this.draw("white");
-            }, 1000/60);
+            }, 1000 / 60);
         }
 
     }
@@ -117,12 +111,12 @@ class JK {
     }
 }
 
-const jk_btn = document.getElementById("jk_flipflop");
-jk_btn.addEventListener("click", () => {
+const sr_btn = document.getElementById("sr_flipflop");
+sr_btn.addEventListener("click", () => {
     console.log(index_for_unit);
     index_for_unit++;
     console.log(index_for_unit);
     const position_x = window.innerWidth / 2;
     const position_y = position_x / 2;
-    units[index_for_unit] = new JK(position_x, position_y);
+    units[index_for_unit] = new SR(position_x, position_y);
 });

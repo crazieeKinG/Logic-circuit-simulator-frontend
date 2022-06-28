@@ -13,9 +13,7 @@
 
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/gates.css">
-    <link rel="stylesheet" href="./css/input.css">
-    <link rel="stylesheet" href="./css/output.css">
+    <link rel="stylesheet" href="./css/workspace.css">
     <link rel="stylesheet" href="./css/node_selection.css">
 </head>
 
@@ -24,53 +22,112 @@
         <canvas id="workspace"></canvas>
 
         <div class="toolbar">
-            <a href="./index.html">Home</a>
-            <input type="text" name="title" id="title" placeholder="Enter project title">
-            <button id="save">Save project</button>
-            <span id="save_status"></span>
+            <div class="column">
+                <input type="text" name="title" id="title" placeholder="Enter project title">
+                <span id="save_status"></span>
+            </div>
+            <div class="nav row justify-between">
+                <a href="./index.html">Home</a>
+                <button class="btn btn-save" id="save">Save</button>
+            </div>
+            <label for="wire">Wire function</label>
+            <div class="group column node_selection" id="wire">
+                <label for="node_selected">Selected node</label>
+                <span class="node_selected" id="node_selected"></span>
+                <button class="btn btn-events" id="clear_node_selection">Clear selection</button>
+            </div>
+            <button class="btn btn-delete" id="delete_selected_node">Delete node</button>
             <label for="gates">Gates</label>
-            <div class="gates" id="gates">
-                <div class=" gate and_gate" inputs="2">2 AND</div>
-                <div class=" gate and_gate" inputs="3">3 AND</div>
-                <div class=" gate or_gate" inputs="2">2 OR</div>
-                <div class=" gate or_gate" inputs="3">3 OR</div>
-                <div class=" gate " id="not_gate">NOT</div>
-                <div class=" gate nand_gate" inputs="2">2 NAND</div>
-                <div class=" gate nand_gate" inputs="3">3 NAND</div>
-                <div class=" gate nor_gate" inputs="2">2NOR</div>
-                <div class=" gate nor_gate" inputs="3">3 NOR</div>
-                <div class=" gate xor_gate" inputs="2">2 XOR</div>
-                <div class=" gate xor_gate" inputs="3">3 XOR</div>
-                <div class=" gate xnor_gate" inputs="2">2 XNOR</div>
-                <div class=" gate xnor_gate" inputs="3">3 XNOR</div>
-                <div class=" gate " id="jk_flipflop">JK flipflop</div>
+            <div class="group" id="gates">
+                <div class="logical_unit and_gate" inputs="2">
+                    <img src="./svg/And.svg" alt="And Gate">
+                    2-IN AND
+                </div>
+                <div class="logical_unit and_gate" inputs="3">
+                    <img src="./svg/And.svg" alt="And Gate">
+                    3-IN AND
+                </div>
+                <div class="logical_unit or_gate" inputs="2">
+                    <img src="./svg/Or.svg" alt="Or Gate">
+                    2-IN OR
+                </div>
+                <div class="logical_unit or_gate" inputs="3">
+                    <img src="./svg/Or.svg" alt="Or Gate">
+                    3-IN OR
+                </div>
+                <div class="logical_unit " id="not_gate">
+                    <img src="./svg/not.svg" alt="Not Gate">
+                    NOT
+                </div>
+                <div class="logical_unit nand_gate" inputs="2">
+                    <img src="./svg/Nand.svg" alt="Nand Gate">
+                    2-IN Nand
+                </div>
+                <div class="logical_unit nand_gate" inputs="3">
+                    <img src="./svg/Nand.svg" alt="Nand Gate">
+                    3-IN NAND
+                </div>
+                <div class="logical_unit nor_gate" inputs="2">
+                    <img src="./svg/Nor.svg" alt="Nor Gate">
+                    2-IN NOR
+                </div>
+                <div class="logical_unit nor_gate" inputs="3">
+                    <img src="./svg/Nor.svg" alt="Nor Gate">
+                    3-IN NOR
+                </div>
+                <div class="logical_unit xor_gate" inputs="2">
+                    <img src="./svg/Xor.svg" alt="Xor Gate">
+                    2-IN XOR
+                </div>
+                <div class="logical_unit xor_gate" inputs="3">
+                    <img src="./svg/Xor.svg" alt="Xor Gate">
+                    3-IN XOR
+                </div>
+                <div class="logical_unit xnor_gate" inputs="2">
+                    <img src="./svg/Xnor.svg" alt="Xnor Gate">
+                    2-IN XNOR
+                </div>
+                <div class="logical_unit xnor_gate" inputs="3">
+                    <img src="./svg/Xnor.svg" alt="Xnor Gate">
+                    3-IN XNOR
+                </div>
+                <div class="logical_unit " id="jk_flipflop">
+                    JK flipflop
+                </div>
+                <div class="logical_unit " id="t_flipflop">
+                    T flipflop
+                </div>
+                <div class="logical_unit " id="sr_flipflop">
+                    SR flipflop
+                </div>
             </div>
 
             <label for="inputs">Inputs</label>
-            <div class="inputs" id="inputs">
-                <div class="switch" id="switch_input"></div>
-                <div class="frequency_generator" custom_frequency="0.5">.5 Hz</div>
-                <div class="frequency_generator" custom_frequency="1">1 Hz</div>
+            <div class="group" id="inputs">
+                <div class="logical_unit switch" id="switch_input">Switch</div>
+                <div class="logical_unit frequency_generator" custom_frequency="0.5">.5 Hz</div>
+                <div class="logical_unit frequency_generator" custom_frequency="1">1 Hz</div>
             </div>
 
             <label for="outputs">Outputs</label>
-            <div class="outputs" id="outputs">
-                <div class="light" id="light_output"></div>
+            <div class="group" id="outputs">
+                <div class="logical_unit light" id="light_output">Light</div>
+            </div>
+            <label for="information">Information</label>
+            <div class="group" id="information">
 
             </div>
-            <button id="ref">Play</button>
-            <div class="node_selection">
-                <label for="node_selected">Selected node</label>
-                <span class="node_selected" id="node_selected"></span>
-            </div>
-            <button id="clear_node_selection">clear node selection</button>
-            <button id="delete_selected_node">Delete node</button>
+
         </div>
     </div>
 
+    
     <script src="./js/constants.js"></script>
     <script src="./js/utils.js"></script>
-
+    
+    <script src="./js/api_calls.js"></script>
+    <script src="./js/information.js"></script>
+    
     <script src="./js/draw_canvas.js"></script>
     <script src="./js/logical_units/input_join.js"></script>
     <script src="./js/logical_units/output_join.js"></script>
@@ -87,10 +144,11 @@
     <script src="./js/logical_units/xor.js"></script>
     <script src="./js/logical_units/frequency_generator.js"></script>
     <script src="./js/logical_units/jk_flipflop.js"></script>
+    <script src="./js/logical_units/t_flipflop.js"></script>
+    <script src="./js/logical_units/sr_flipflop.js"></script>
 
     <script src="./js/drag_and_drop.js"></script>
     <script src="./js/wire_function.js"></script>
-    <script src="./js/api_calls.js"></script>
     <script src="./js/index.js"></script>
 </body>
 

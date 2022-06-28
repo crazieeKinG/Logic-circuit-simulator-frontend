@@ -1,0 +1,90 @@
+.nav {
+    margin-bottom: 1rem;
+    padding: .5rem;
+}
+
+.nav>a {
+    text-decoration: none;
+    color: salmon;
+    text-transform: uppercase;
+}
+
+#title {
+    font-size: 1.4rem;
+    padding: .5rem .5rem .2rem 1rem;
+    border: 4px solid transparent;
+    border-bottom: 4px solid rgb(42, 52, 142);
+    outline: none;
+    margin-bottom: .5rem;
+}
+
+.group {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid grey;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: .5rem;
+}
+
+.logical_unit {
+    padding: .8rem;
+    width: 50%;
+    border: 1px solid transparent;
+    text-align: center;
+    cursor: pointer;
+    transition: .5s ease;
+}
+
+.logical_unit:hover {
+    border: 1px solid grey;
+}
+
+.gates>img {
+    width: 200px;
+}
+
+label {
+    margin: .8rem 0;
+}
+
+.btn {
+    padding: .8rem .5rem;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+.btn-events {
+    border: 1px solid rgb(76, 76, 185);
+    background-color: rgb(76, 76, 185);
+    color: white;
+}
+
+.btn-events:hover {
+    border: 1px solid rgb(35, 35, 187);
+    background-color: rgb(35, 35, 187);
+}
+
+.btn-delete {
+    border: 1px solid rgb(242, 58, 58);
+    background-color: rgb(242, 58, 58);
+    color: white;
+}
+
+.btn-delete:hover {
+    border: 1px solid rgb(233, 9, 9);
+    background-color: rgb(233, 9, 9);
+}
+
+.btn-save {
+    border: 1px solid rgb(140, 151, 255);
+    background-color: rgb(140, 151, 255);
+    color: white;
+}
+
+.btn-save:hover {
+    border: 1px solid rgb(42, 52, 142);
+    background-color: rgb(42, 52, 142);
+}

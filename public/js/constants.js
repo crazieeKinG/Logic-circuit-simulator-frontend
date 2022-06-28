@@ -1,4 +1,5 @@
 const FIREBASE_GET_PROJECT_URL = "http://localhost:3000/project/";
+const FIREBASE_GET_INFORMATION_URL = "http://localhost:3000/information/all";
 const FIREBASE_POST_URL = "http://localhost:3000/project/new";
 
 const CANVAS = document.querySelector("#workspace");
@@ -6,7 +7,7 @@ const CANVAS = document.querySelector("#workspace");
 const lineWidth = 3;
 
 const client_dx = 300;
-const client_dy = 100;
+const client_dy = 50;
 
 CANVAS.width = window.innerWidth - client_dx;
 CANVAS.height = window.innerHeight - client_dy;
