@@ -38,12 +38,13 @@
     transition: .5s ease;
 }
 
-.logical_unit:hover {
-    border: 1px solid grey;
+.logical_unit>img{
+    width: 100%;
+    max-width: 100%;
 }
 
-.gates>img {
-    width: 200px;
+.logical_unit:hover {
+    border: 1px solid grey;
 }
 
 label {
