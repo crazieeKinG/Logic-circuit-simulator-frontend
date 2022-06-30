@@ -13,9 +13,9 @@ class Not {
 
         this.node = [];
 
-        this.node.push(new Input(this.x, this.y + this.offset(), 0));
+        this.node.push(new Input(this.x, this.y + half_the_value(this.height), 0));
 
-        this.node.push(new Output(this.x + this.width, this.y + this.offset()));
+        this.node.push(new Output(this.x + this.width, this.y + half_the_value(this.height)));
     }
 
     /**
@@ -33,16 +33,16 @@ class Not {
 
         CONTEXT.moveTo(this.x, this.y);
         CONTEXT.lineTo(this.x, this.y + this.height);
-        CONTEXT.lineTo(this.x + this.width, this.y + this.offset());
+        CONTEXT.lineTo(this.x + this.width, this.y + half_the_value(this.height));
         CONTEXT.lineTo(this.x - 1, this.y);
 
 
         this.node[0].x = this.x - this.width;
-        this.node[0].y = this.y + this.offset();
+        this.node[0].y = this.y + half_the_value(this.height);
         this.node[0].draw();
 
         this.node[1].x = this.x + this.width + (radius);
-        this.node[1].y = this.y + this.offset();
+        this.node[1].y = this.y + half_the_value(this.height);
         this.node[1].draw();
 
         CONTEXT.strokeStyle = stroke_color;
@@ -55,7 +55,7 @@ class Not {
 
         CONTEXT.beginPath();
 
-        CONTEXT.arc(this.x + this.width, this.y + this.offset(), radius, 0, Math.PI * 2);
+        CONTEXT.arc(this.x + this.width, this.y + half_the_value(this.height), radius, 0, Math.PI * 2);
         CONTEXT.fillStyle = INACTIVE_COLOR;
         CONTEXT.fill();
 
