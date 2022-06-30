@@ -1,11 +1,19 @@
 class Project_list {
+    /**
+     * This function creates a new instance of the class 'Project_list' and assigns the values of the parameters 'serial_number' and 'project_info' to the properties 'serial_number' and 'project_info' of the new instance.
+     * @param serial_number - The serial number of the project.
+     * @param project_info - This is an object that contains the project id and project name.
+     */
     constructor(serial_number, project_info) {
         this.project_info = project_info;
         this.serial_number = serial_number;
         this.create();
     }
 
-    create = () => {
+    /**
+     * Creating a new project element with its title and link to the workspace with its corresponding id and title. 
+     */
+    create = () => {        
         const project = document.createElement("div");
         project.className = "project row justify-between";
 

@@ -1,38 +1,42 @@
-const INFORMATION_SECTION = document.getElementById("information");
-const INFORMATION_DATA = [];
-get_information_data().then(response=>{
-    response.forEach(information=>{
-        INFORMATION_DATA.push(information);
-        console.log(information);
-        console.log(INFORMATION_DATA);
-    });
-});
-
-console.log(INFORMATION_DATA);
-
 class Information {
-    constructor(data) {
-        this.data = data;
-
+    /**
+     * This function creates a new instance of the class 'Information' and assigns the value of the parameters 'unit_information' to the properties 'unit_information' of the new instance.
+     * @param unit_information - This is an object that contains all the information about the logical unit.
+     */
+    constructor(unit_information) {
+        this.unit_information = unit_information;
         this.create_section();
     }
 
+    /** 
+     * Creating a information section with title, description and truth table of the units. 
+     */
     create_section = () => {
         const title = document.createElement('h4');
-        title.innerText = this.data.title;
+        title.innerText = this.unit_information.title;
+        title.style.marginBottom = ".5rem";
         INFORMATION_SECTION.appendChild(title);
 
         const description = document.createElement('p');
-        description.innerText = this.data.description;
+        description.innerText = this.unit_information.description;
         INFORMATION_SECTION.appendChild(description);
 
-        if (this.data.table) {
-            const table = document.createElement('table');
+        if (this.unit_information.truth_table) {
+            const table_label = document.createElement('label');
+            table_label.htmlFor = "truth_table";
+            table_label.innerText = "Truth Table";
+            table_label.style.width = "100%";
+            INFORMATION_SECTION.appendChild(table_label);
 
-            this.data.truth_table.forEach(row => {
+            const table = document.createElement('table');
+            table.id = "truth_table";
+
+            this.unit_information.truth_table.forEach(row => {
                 const table_row = document.createElement('tr');
 
-                for (let key in row) {
+                const keys = Object.keys(row).sort();
+
+                for (let key of keys) {
                     const table_data = document.createElement('td');
 
                     table_data.innerText = row[key];
@@ -45,22 +49,21 @@ class Information {
 
             INFORMATION_SECTION.appendChild(table);
         }
-
     }
 }
 
-update_information_section = () => {
-    console.log(SELECTED_UNIT);
-    if (SELECTED_UNIT === null) {
+/**
+ * It takes the data from the array of INFORMATION_DATA and creates a new Information object based on the name of the selected unit.
+ */
+const update_information_section = () => {
+    if (selected_unit === null) {
         INFORMATION_SECTION.innerHTML = "";
     } else {
         INFORMATION_SECTION.innerHTML = "";
-
-        console.log("..", INFORMATION_DATA);
-        INFORMATION_DATA.forEach((data)=>{
-            console.log("...", data.id );
-            if (data.id === units[SELECTED_UNIT].name) {
-                console.log(data);
+        
+        INFORMATION_DATA.forEach((data) => {
+            console.log("...", data.id);
+            if (data.id === units[selected_unit].name) {
                 new Information(data);
                 return;
             }

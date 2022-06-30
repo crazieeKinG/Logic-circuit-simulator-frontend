@@ -1,4 +1,9 @@
 class T {
+    /**
+     * It creates a new object called a T-Flip Flop.
+     * @param position_x - x position of the top left corner of the component
+     * @param position_y - the y position of the top left corner of the component
+     */
     constructor(position_x, position_y) {
         this.x = position_x;
         this.y = position_y;
@@ -31,23 +36,31 @@ class T {
         this.node.push(new Output(this.x + this.width, this.y + this.first_offset()));
 
         this.node.push(new Output(this.x + this.width, this.y + this.second_offset()));
-
-        this.draw("white");
     }
 
-    first_offset = () => this.height / 3
+    /**
+     * A function that returns the first offset of the flipflop.
+     */
+    first_offset = () => this.height / 3;
 
+    /**
+     * A function that returns the offset i.e. two third of height of the object.
+     */
     second_offset = () => (this.height / 3) * 2;
 
+    /**
+     * A function that takes in a stroke color and draws the flipflop.
+     * @param stroke_color stroke color for the flipflop
+     */
     draw = (stroke_color) => {
-        context.beginPath();
+        CONTEXT.beginPath();
 
-        context.strokeStyle = stroke_color;
-        context.strokeRect(this.x, this.y, this.width, this.height);
+        CONTEXT.strokeStyle = stroke_color;
+        CONTEXT.strokeRect(this.x, this.y, this.width, this.height);
 
-        context.font = "2rem Josefin Sans";
-        context.fillStyle = "white";
-        context.fillText("T", this.x + (this.width / 3), this.y + (this.height / 2));
+        CONTEXT.font = "2rem Josefin Sans";
+        CONTEXT.fillStyle = INACTIVE_COLOR;
+        CONTEXT.fillText("T", this.x + (this.width / 3), this.y + (this.height / 2));
 
         this.node[0].x = this.x - 15;
         this.node[0].y = this.y + this.first_offset();
@@ -65,11 +78,14 @@ class T {
         this.node[3].y = this.y + this.second_offset();
         this.node[3].draw();
 
-        context.stroke();
+        CONTEXT.stroke();
 
-        context.closePath();
+        CONTEXT.closePath();
     }
 
+    /**
+     * It is used to update the state of nodes of the flipflop. 
+     */
     operate = () => {
         this.gates[0].node[0].state = this.node[0].state;
         this.gates[0].node[1].state = this.node[1].state;
@@ -80,6 +96,9 @@ class T {
         this.node[3].state = this.gates[2].node[2].state;
     }
 
+    /**
+     * It is used to update the state of the flipflop. 
+     */
     run = () => {
         if (!this.t_id) {
 
@@ -96,12 +115,17 @@ class T {
                 this.gates[9].run();
 
                 this.operate();
-                this.draw("white");
-            }, 1000/60);
+                this.draw(INACTIVE_COLOR);
+            }, 1000 / 60);
         }
-
     }
 
+    /**
+     *  A function that checks if the mouse is clicked on the nodes.
+     * @param x x position of mouse
+     * @param y y position of mouse
+     * @param object_index index of the gate in the list of the instances created
+     */
     clicked = (x, y, object_index) => {
         for (let index in this.node) {
             this.node[index].clicked(x, y, object_index, index);
@@ -109,12 +133,4 @@ class T {
     }
 }
 
-const t_btn = document.getElementById("t_flipflop");
-t_btn.addEventListener("click", () => {
-    console.log(index_for_unit);
-    index_for_unit++;
-    console.log(index_for_unit);
-    const position_x = window.innerWidth / 2;
-    const position_y = position_x / 2;
-    units[index_for_unit] = new T(position_x, position_y);
-});
+

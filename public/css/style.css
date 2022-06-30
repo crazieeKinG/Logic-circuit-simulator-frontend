@@ -1,5 +1,5 @@
 canvas {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     /* margin: 5px; */
     background-color: salmon;
 }
@@ -21,7 +21,7 @@ canvas {
 
 .toolbar {
     width: auto;
-    max-height: 95vh;
+    max-height: 100vh;
     display: flex;
     flex-direction: column;
     width: 100%;

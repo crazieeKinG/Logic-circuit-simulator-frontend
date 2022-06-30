@@ -1,7 +1,11 @@
 class Xnor {
+    /**
+     * This function creates a new XNOR gate object with the specified number of inputs and outputs.
+     * @param position_x - x position of the gate
+     * @param position_y - the y position of the gate
+     * @param inputs - number of inputs
+     */
     constructor(position_x, position_y, inputs) {
-        console.log("xnor gate construct");
-
         this.x = position_x;
         this.y = position_y;
         this.width = 25;
@@ -17,32 +21,40 @@ class Xnor {
             this.node.push(new Input(this.x, this.y + this.input_offset(index), 0));
         }
 
-        this.node.push(new Output(this.x + this.width, this.y + this.output_offset()));
-
-        // this.draw("white");
-        // this.run();
+        this.node.push(new Output(this.x + this.width, this.y + half_the_value(this.height)));
     }
 
+    /**
+    * A function that takes in an index and returns the offset of the input.
+    * @param index The index of the input
+    * @returns offset of the input based on index
+    */
     input_offset = (index) => (this.height / (this.number_of_inputs + 1)) * index;
 
-    output_offset = () => this.height / 2;
-
+    /**
+     * A function that takes in a stroke color and draws the gate.
+     * @param stroke_color stroke color for the gate
+     */
     draw = (stroke_color) => {
         const radius_one = this.height;
         let radius_two = this.height / 2;
 
-        context.beginPath();
+        CONTEXT.beginPath();
 
-        context.arc(this.x - radius_one, this.y + radius_two, radius_one, to_radian(-30), to_radian(30), false);
-        context.strokeStyle = stroke_color;
-        context.stroke();
-        context.closePath();
+        CONTEXT.font = "1rem Josefin Sans";
+        CONTEXT.fillStyle = INACTIVE_COLOR;
+        CONTEXT.fillText("XNOR", this.x, this.y + (this.height + 20));
 
-        context.beginPath();
+        CONTEXT.arc(this.x - radius_one, this.y + radius_two, radius_one, to_radian(-30), to_radian(30), false);
+        CONTEXT.strokeStyle = stroke_color;
+        CONTEXT.stroke();
+        CONTEXT.closePath();
 
-        context.arc(this.x - radius_one + this.dx, this.y + radius_two, radius_one, to_radian(-30), to_radian(30), false);
+        CONTEXT.beginPath();
 
-        context.arc(this.x, this.y + radius_two, radius_two, to_radian(90), to_radian(-90), true);
+        CONTEXT.arc(this.x - radius_one + this.dx, this.y + radius_two, radius_one, to_radian(-30), to_radian(30), false);
+
+        CONTEXT.arc(this.x, this.y + radius_two, radius_two, to_radian(90), to_radian(-90), true);
 
 
         for (let index = 0; index < this.number_of_inputs; index++) {
@@ -54,25 +66,29 @@ class Xnor {
         radius_two = 5;
 
         this.node[this.number_of_inputs].x = this.x + this.width + radius_two;
-        this.node[this.number_of_inputs].y = this.y + this.output_offset();
+        this.node[this.number_of_inputs].y = this.y + half_the_value(this.height);
         this.node[this.number_of_inputs].draw();
 
-        context.strokeStyle = stroke_color;
-        context.stroke();
-        context.fillStyle = fill_color;
-        context.fill();
+        CONTEXT.strokeStyle = stroke_color;
+        CONTEXT.stroke();
+        CONTEXT.fillStyle = FILL_COLOR;
+        CONTEXT.fill();
 
-        context.closePath();
+        CONTEXT.closePath();
 
-        context.beginPath();
+        CONTEXT.beginPath();
 
-        context.arc(this.x + this.width, this.y + this.output_offset(), radius_two, 0, Math.PI * 2);
-        context.fillStyle = "white";
-        context.fill();
+        CONTEXT.arc(this.x + this.width, this.y + half_the_value(this.height), radius_two, 0, Math.PI * 2);
+        CONTEXT.fillStyle = INACTIVE_COLOR;
+        CONTEXT.fill();
 
-        context.closePath();
+        CONTEXT.closePath();
     }
 
+    /**
+    *  A function that reads the number of inputs and returns the state of the gate. 
+    * @returns the state based on the input nodes.
+    */
     operate = () => {
         let count_low_state = 0;
         let count_high_state = 0;
@@ -86,31 +102,24 @@ class Xnor {
         else return 0;
     }
 
+    /**
+     * It is used to update the state of the gate. 
+     */
     run = () => {
-        // requestAnimationFrame(this.run);
         this.node[this.number_of_inputs].state = this.operate();
     }
 
+    /**
+     *  A function that checks if the mouse is clicked on the nodes.
+     * @param x x position of mouse
+     * @param y y position of mouse
+     * @param object_index index of the gate in the list of the instances created
+     */
     clicked = (x, y, object_index) => {
-        console.log("or");
-        if (check_mouse_in_unit(x, y, this.x, this.y, this.width, this.height)) {
-
-            console.log("clicked and");
-        }
         for (let index in this.node) {
             this.node[index].clicked(x, y, object_index, index);
         }
     }
 }
 
-const xnor_btn = [...document.getElementsByClassName("xnor_gate")];
-xnor_btn.forEach(xnor => {
-    xnor.addEventListener("click", () => {
-        console.log(index_for_unit);
-        index_for_unit++;
-        console.log(index_for_unit);
-        const position_x = window.innerWidth / 2;
-        const position_y = position_x / 2;
-        units[index_for_unit] = new Xnor(position_x, position_y, parseInt(xnor.getAttribute('inputs')));
-    });
-});
+

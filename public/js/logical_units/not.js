@@ -1,7 +1,10 @@
 class Not {
+    /**
+     *  The constructor function for the NOT gate class.
+     * @param position_x - x position of the gate on the canvas
+     * @param position_y - the y position of the gate
+     */
     constructor(position_x, position_y) {
-        console.log("not gate construct");
-
         this.x = position_x;
         this.y = position_y;
         this.width = 25;
@@ -13,23 +16,25 @@ class Not {
         this.node.push(new Input(this.x, this.y + this.offset(), 0));
 
         this.node.push(new Output(this.x + this.width, this.y + this.offset()));
-
-        // this.draw("white");
-        // this.run();
     }
 
-    offset = () => this.height / 2;
-
+    /**
+     * A function that takes in a stroke color and draws the gate.
+     * @param stroke_color stroke color for the gate
+     */
     draw = (stroke_color) => {
-        context.beginPath();
+        CONTEXT.beginPath();
+
+        CONTEXT.font = "1rem Josefin Sans";
+        CONTEXT.fillStyle = INACTIVE_COLOR;
+        CONTEXT.fillText("NOT", this.x, this.y + (this.height + 20));
 
         const radius = 5;
 
-
-        context.moveTo(this.x, this.y);
-        context.lineTo(this.x, this.y + this.height);
-        context.lineTo(this.x + this.width, this.y + this.offset());
-        context.lineTo(this.x - 1, this.y);
+        CONTEXT.moveTo(this.x, this.y);
+        CONTEXT.lineTo(this.x, this.y + this.height);
+        CONTEXT.lineTo(this.x + this.width, this.y + this.offset());
+        CONTEXT.lineTo(this.x - 1, this.y);
 
 
         this.node[0].x = this.x - this.width;
@@ -40,36 +45,37 @@ class Not {
         this.node[1].y = this.y + this.offset();
         this.node[1].draw();
 
-        context.strokeStyle = stroke_color;
-        context.stroke();
+        CONTEXT.strokeStyle = stroke_color;
+        CONTEXT.stroke();
 
-        context.fillStyle = fill_color;
-        context.fill();
+        CONTEXT.fillStyle = FILL_COLOR;
+        CONTEXT.fill();
 
+        CONTEXT.closePath();
 
+        CONTEXT.beginPath();
 
-        context.closePath();
+        CONTEXT.arc(this.x + this.width, this.y + this.offset(), radius, 0, Math.PI * 2);
+        CONTEXT.fillStyle = INACTIVE_COLOR;
+        CONTEXT.fill();
 
-        context.beginPath();
-
-        context.arc(this.x + this.width, this.y + this.offset(), radius, 0, Math.PI * 2);
-        context.fillStyle = "white";
-        context.fill();
-
-        context.closePath();
+        CONTEXT.closePath();
     }
 
+    /**
+     * It is used to update the state of the gate. 
+     */
     run = () => {
-        // requestAnimationFrame(this.run);
         this.node[1].state = (this.node[0].state + 1) % 2;
     }
 
+    /**
+     *  A function that checks if the mouse is clicked on the nodes.
+     * @param x x position of mouse
+     * @param y y position of mouse
+     * @param object_index index of the gate in the list of the instances created
+     */
     clicked = (x, y, object_index) => {
-        console.log("and");
-        if (check_mouse_in_unit(x, y, this.x, this.y, this.width, this.height)) {
-            console.log("clicked not");
-        }
-
         for (let index in this.node) {
             this.node[index].clicked(x, y, object_index, index);
         }
@@ -77,11 +83,4 @@ class Not {
 }
 
 
-const not_btn = document.getElementById("not_gate");
-not_btn.addEventListener("click", () => {
-    index_for_unit++;
-    console.log(index_for_unit);
-    const position_x = window.innerWidth / 2;
-    const position_y = position_x / 2;
-    units[index_for_unit] = new Not(position_x, position_y);
-});
+

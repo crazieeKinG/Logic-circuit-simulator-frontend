@@ -1,75 +1,80 @@
 class Frequency_generator {
+    /**
+     * "This function creates a new object called Frequency, which has a property called frequency.
+     * @param position_x - x position of the object
+     * @param position_y - The y position of the object
+     * @param frequency - the frequency of the waveform
+     */
     constructor(position_x, position_y, frequency) {
         this.x = position_x;
         this.y = position_y;
 
         this.width = 80;
         this.height = 50;
-
         this.name = "Frequency";
 
         this.frequency = parseFloat(frequency);
         this.frequency_generator_id = "";
 
         this.node = [];
-        this.node.push(new Output(this.x + this.width, this.y + this.offset()));
-
-        this.draw("white");
+        this.node.push(new Output(this.x + this.width, this.y + half_the_value(this.height)));
     }
 
-    offset = () => this.height / 2;
-
+    /**
+     * A function that takes in a stroke color and draws the frequency generator.
+     * @param stroke_color stroke color for frequency generator
+     */
     draw = (stroke_color) => {
-        context.beginPath();
+        CONTEXT.beginPath();
 
-        const mid_height = this.y + this.offset();
+        CONTEXT.font = "1rem Josefin Sans";
+        CONTEXT.fillStyle = INACTIVE_COLOR;
+        CONTEXT.fillText(`Frequency - ${this.frequency}`, this.x, this.y + (this.height + 20));
 
-        context.moveTo(this.x, mid_height);
-        context.lineTo(this.x + 10, mid_height);
-        context.lineTo(this.x + 20, mid_height + 10);
-        context.lineTo(this.x + 30, mid_height - 20);
-        context.lineTo(this.x + 50, mid_height + 20);
-        context.lineTo(this.x + 60, mid_height - 10);
-        context.lineTo(this.x + 70, mid_height);
-        context.lineTo(this.x + 80, mid_height);
+        const mid_height = this.y + half_the_value(this.height);
+
+        CONTEXT.moveTo(this.x, mid_height);
+        CONTEXT.lineTo(this.x + 10, mid_height);
+        CONTEXT.lineTo(this.x + 20, mid_height + 10);
+        CONTEXT.lineTo(this.x + 30, mid_height - 20);
+        CONTEXT.lineTo(this.x + 50, mid_height + 20);
+        CONTEXT.lineTo(this.x + 60, mid_height - 10);
+        CONTEXT.lineTo(this.x + 70, mid_height);
+        CONTEXT.lineTo(this.x + 80, mid_height);
 
         this.node[0].x = this.x + this.width;
-        this.node[0].y = this.y + this.offset();
+        this.node[0].y = this.y + half_the_value(this.height);
         this.node[0].draw();
 
-        context.strokeStyle = stroke_color;
-        context.stroke();
+        CONTEXT.strokeStyle = stroke_color;
+        CONTEXT.stroke();
 
-        context.closePath();
+        CONTEXT.closePath();
     }
 
+    /**
+     * It is used to update the state of the frequency generator. 
+     */
     run = () => {
         if (!this.frequency_generator_id) {
-            // clearInterval(this.frequency_generator_id);
-
             this.frequency_generator_id = setInterval(() => {
                 this.node[0].state = ++this.node[0].state % 2;
-                // console.log(this.frequency_generator_id, "..");
-                console.log(this.frequency, "..");
                 this.draw();
             }, this.frequency * 1000);
         }
-
     }
+    /**
+     *  A function that checks if the mouse is clicked on the nodes.
+     * @param x x position of mouse
+     * @param y y position of mouse
+     * @param object_index index of the gate in the list of the instances created
+     */
     clicked = (x, y, object_index) => {
         this.node[0].clicked(x, y, object_index, 0);
     }
 }
 
-const frequency_generator_btn = [...document.getElementsByClassName("frequency_generator")];
-frequency_generator_btn.forEach(frequency_generator => {
 
-    frequency_generator.addEventListener("click", () => {
-        console.log(index_for_unit);
-        index_for_unit++;
-        console.log(index_for_unit);
-        const position_x = window.innerWidth / 2;
-        const position_y = position_x / 2;
-        units[index_for_unit] = new Frequency_generator(position_x, position_y,frequency_generator.getAttribute("custom_frequency"));
-    });
-}); 
+
+
+

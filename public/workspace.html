@@ -29,6 +29,7 @@
             <div class="nav row justify-between">
                 <a href="./index.html">Home</a>
                 <button class="btn btn-save" id="save">Save</button>
+                <button class="btn btn-delete" id="delete">Delete</button>
             </div>
             <label for="wire">Wire function</label>
             <div class="group column node_selection" id="wire">
@@ -91,6 +92,10 @@
                     <img src="./svg/Xnor.svg" alt="Xnor Gate">
                     3-IN XNOR
                 </div>
+            </div>
+
+            <label for="flipflop">Flip flops</label>
+            <div class="group" id="flipflop">
                 <div class="logical_unit " id="jk_flipflop">
                     JK flipflop
                 </div>
@@ -105,9 +110,13 @@
             <label for="inputs">Inputs</label>
             <div class="group" id="inputs">
                 <div class="logical_unit switch" id="switch_input">Switch</div>
-                <div class="logical_unit frequency_generator" custom_frequency="0.5">.5 Hz</div>
-                <div class="logical_unit frequency_generator" custom_frequency="1">1 Hz</div>
+                <div class="logical_unit frequency_generator">
+                    Frequency generator
+                </div>
             </div>
+
+            <label for="frequency_value">Frequency value</label>
+            <input type="number" name="frequency_value" id="frequency_value" value="1" step="0.5">
 
             <label for="outputs">Outputs</label>
             <div class="group" id="outputs">
@@ -121,13 +130,15 @@
         </div>
     </div>
 
-    
+
     <script src="./js/constants.js"></script>
     <script src="./js/utils.js"></script>
-    
+    <script src="./js/dom_component_events.js"></script>
+    <script src="./js/logical_units_handler.js"></script>
+
     <script src="./js/api_calls.js"></script>
     <script src="./js/information.js"></script>
-    
+
     <script src="./js/draw_canvas.js"></script>
     <script src="./js/logical_units/input_join.js"></script>
     <script src="./js/logical_units/output_join.js"></script>

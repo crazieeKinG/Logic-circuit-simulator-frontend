@@ -1,30 +1,37 @@
+/**
+ * It draws the canvas at regular interval of time.
+ */
 const draw_canvas = () => {
-    context.clearRect(0, 0, canvas_width, canvas_height);
-
-    // for (let index in units) {
-    // }
+    CONTEXT.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
     let selected_color;
 
+    if (!data_loaded && project_id !== "null") {
+        draw_loading_screen();
+    }
+
     for (let index in units) {
 
-        if (index === SELECTED_UNIT) {
-            selected_color = "#72faab";
+        if (index === selected_unit) {
+            selected_color = SELECTED_COLOR;
         } else {
-            selected_color = "white";
+            selected_color = INACTIVE_COLOR;
         }
 
         units[index].run();
         units[index].draw(selected_color);
     }
 
-    requestAnimationFrame(()=>{
+    requestAnimationFrame(() => {
         draw_canvas();
     });
 }
 
+/**
+ * It takes a JSON object and creates the objects that were saved in the JSON object.
+ * @param save_data - The data that is saved.
+ */
 const initialize_canvas = (save_data) => {
-    console.log(JSON.stringify(save_data));
     for (let index in save_data) {
         index_for_unit = index;
         switch (save_data[index].name) {
@@ -68,10 +75,18 @@ const initialize_canvas = (save_data) => {
                 units[index] = new JK(save_data[index].x, save_data[index].y);
                 break;
 
+            case "SR":
+                units[index] = new SR(save_data[index].x, save_data[index].y);
+                break;
+
+            case "T":
+                units[index] = new T(save_data[index].x, save_data[index].y);
+                break;
+
             case "Frequency":
                 units[index] = new Frequency_generator(save_data[index].x, save_data[index].y, save_data[index].frequency);
                 break;
-                
+
             case "Wire":
                 const output_ref = save_data[index].output_ref;
                 const input_ref = save_data[index].input_ref;
@@ -81,6 +96,14 @@ const initialize_canvas = (save_data) => {
             default:
                 break;
         }
-        draw_canvas();
     }
+}
+
+/**
+ * It draws the loading screen on the canvas.
+ */
+const draw_loading_screen = () => {
+    CONTEXT.font = "5rem Josefin Sans";
+    CONTEXT.fillStyle = INACTIVE_COLOR;
+    CONTEXT.fillText("Loading...", (CANVAS_WIDTH / 4), (CANVAS_HEIGHT / 2));
 }
