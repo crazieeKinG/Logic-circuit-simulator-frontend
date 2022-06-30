@@ -3,7 +3,7 @@
  */
 CLEAR_NODE_SELECTION.addEventListener(CLICK_EVENT, () => {
     const index = selected_input_output_node[0];
-    units[index[0]].node[index[1]].color = INACTIVE_COLOR;
+    if (units[index[0]]) units[index[0]].node[index[1]].color = INACTIVE_COLOR;
     selected_input_output_node = [];
     node_selection();
 });
@@ -47,6 +47,7 @@ SAVE_PROJECT.addEventListener(CLICK_EVENT, () => {
             STATUS.innerText = "Saved";
             if (!!response.project_id) {
                 project_id = response.project_id;
+                data_loaded = true;
             }
         } else {
             STATUS.innerText = "Failed to save";

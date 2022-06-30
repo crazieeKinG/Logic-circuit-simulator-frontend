@@ -21,7 +21,7 @@ class Or {
             this.node.push(new Input(this.x, this.y + this.input_offset(index), 0));
         }
 
-        this.node.push(new Output(this.x + this.width, this.y + half_the_value()));
+        this.node.push(new Output(this.x + this.width, this.y + half_the_value(this.height)));
     }
 
     /**
@@ -56,7 +56,7 @@ class Or {
         }
 
         this.node[this.number_of_inputs].x = this.x + this.width;
-        this.node[this.number_of_inputs].y = this.y + half_the_value();
+        this.node[this.number_of_inputs].y = this.y + half_the_value(this.height);
         this.node[this.number_of_inputs].draw();
 
         CONTEXT.strokeStyle = stroke_color;
