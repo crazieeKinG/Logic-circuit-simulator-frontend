@@ -60,7 +60,7 @@ class Frequency_generator {
             this.frequency_generator_id = setInterval(() => {
                 this.node[0].state = ++this.node[0].state % 2;
                 this.draw();
-            }, this.frequency * 1000);
+            }, this.frequency * ONE_SECOND);
         }
     }
     /**

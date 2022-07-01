@@ -4,6 +4,7 @@ const API_POST_URL = "http://localhost:3000/project/new";
 const API_DELETE_PROJECT_URL = "http://localhost:3000/project/delete/";
 
 let data_loaded = false;
+const ONE_SECOND = 1000;
 
 const CANVAS = document.getElementById("workspace");
 

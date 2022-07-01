@@ -116,7 +116,7 @@ class T {
 
                 this.operate();
                 this.draw(INACTIVE_COLOR);
-            }, 1000 / 60);
+            }, ONE_SECOND);
         }
     }
 
